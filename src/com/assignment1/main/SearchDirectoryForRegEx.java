@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * This class takes a regular ecpression in string format as input
+ * This class takes a regular expression in string format as input
  * then searches the home directory and all the sub directories for
  * files whose name matches the given RegEx
  */
@@ -39,7 +39,7 @@ public class SearchDirectoryForRegEx {
 
             //checking if the home folder path is valid
             try{
-                if(new File("/home/zemoso").exists()){
+                if(new File("/denim/checking").exists()){
                     printMatching(new File("/home/zemoso"),compiledRegexPattern);
                 }else{
                     throw new FileNotFoundException("given path does not Exist");
@@ -52,7 +52,7 @@ public class SearchDirectoryForRegEx {
             System.out.println("to continue enter 1 or 0 to stop");
             try{
                 loopCounter=scan.nextInt();
-                while(loopCounter!=0||loopCounter!=1){
+                while(loopCounter!=0 && loopCounter!=1){
                     System.out.println("Input should be 1 or 0 please re-enter");
                     loopCounter=scan.nextInt();
                 }
@@ -71,7 +71,7 @@ public class SearchDirectoryForRegEx {
      * @param directory File object of the Folder which should be searched
      * @param compiledRegexPattern compiled pattern of Regular expression given by user
      */
-    private static void printMatching(File directory,Pattern compiledRegexPattern) {
+    public static void printMatching(File directory,Pattern compiledRegexPattern) {
 
         //defining the required filters to identify the file and sub directories in the given directory
         FilenameFilter subDirectoriesFilter = new FilenameFilter() {
