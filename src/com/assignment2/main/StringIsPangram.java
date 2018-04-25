@@ -15,7 +15,7 @@ public class StringIsPangram {
         //getting the Input string
         System.out.println("Input the given String");
         String givenString = scan.nextLine();
-        givenString=null;
+
         //passing the string to function
         if(checkIfPangram(givenString)){
             System.out.println("The given String contains all 26 alphabets");
