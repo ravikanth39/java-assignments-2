@@ -15,7 +15,7 @@ public class StringIsPangram {
         //getting the Input string
         System.out.println("Input the given String");
         String givenString = scan.nextLine();
-
+        givenString=null;
         //passing the string to function
         if(checkIfPangram(givenString)){
             System.out.println("The given String contains all 26 alphabets");
@@ -34,7 +34,13 @@ public class StringIsPangram {
     public static boolean checkIfPangram(String givenString){
 
         //replacing all non alphabetical characters with empty characters using the regex
-        givenString = givenString.replaceAll("[^a-zA-Z]","");
+        try{
+            givenString = givenString.replaceAll("[^a-zA-Z]","");
+        } catch (NullPointerException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
 
         givenString = givenString.toLowerCase();
 
