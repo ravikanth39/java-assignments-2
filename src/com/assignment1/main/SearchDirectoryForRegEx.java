@@ -17,6 +17,7 @@ import java.util.regex.PatternSyntaxException;
 
 public class SearchDirectoryForRegEx {
 
+    //Main function to take input and call the support function
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         int loopCounter =1;
