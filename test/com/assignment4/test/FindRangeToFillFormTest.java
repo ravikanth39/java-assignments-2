@@ -1,13 +1,19 @@
 package com.assignment4.test;
 
 import com.assignment4.main.FindRangeToFillForm;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+/**
+ * class to test the printFormFillRange function of FindRangeToFillForm class
+ */
 public class FindRangeToFillFormTest {
+
+    //test case when range can be found but is less than 30 days
     @Test
     public void printFormFillRangeTest(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -16,6 +22,8 @@ public class FindRangeToFillFormTest {
         FindRangeToFillForm.printFormFillRange("16-07-1998","27-06-2017");
         Assert.assertEquals(expectedOutput,outContent.toString());
     }
+
+    //test case when the sign-up date is after current date
     @Test
     public void printFormFillRangeNoRangeTest(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -25,6 +33,7 @@ public class FindRangeToFillFormTest {
         Assert.assertEquals(expectedOutput,outContent.toString());
     }
 
+    //test case for normal range
     @Test
     public void printFormFillRangeNormalTest(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -34,6 +43,7 @@ public class FindRangeToFillFormTest {
         Assert.assertEquals(expectedOutput,outContent.toString());
     }
 
+    //test case for 1st anniversary
     @Test
     public void printFormFillRangeCloseToEndTest(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -43,6 +53,7 @@ public class FindRangeToFillFormTest {
         Assert.assertEquals(expectedOutput,outContent.toString());
     }
 
+    //test case when current date is in the sign up year so NO RANGE as not an anniversary
     @Test
     public  void printFormFillRangeSameYearTest(){
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();

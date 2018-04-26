@@ -1,12 +1,19 @@
 package com.assignment3.test;
 
 import com.assignment3.main.TimeTakenToPing;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 
+/**
+ * Class to test the getTimeTakenToPing() function of TimeTakenToPing class
+ */
+
 public class TimeTakenToPingTest {
+
+    //test case for local host should output a positive time
     @Test
     public void getTimeTakenToPingLocalTest(){
         try {
@@ -16,6 +23,7 @@ public class TimeTakenToPingTest {
         }
     }
 
+    //test case when host is unrechable
     @Test
     public void getTimeTakenToPingUnreachableHostTest(){
 
@@ -26,6 +34,7 @@ public class TimeTakenToPingTest {
         }
     }
 
+    //test case when host address is invalid
     @Test(expected = IOException.class)
     public void getTimeTakenToPingThrowsException() throws IOException {
         TimeTakenToPing.getTimeTakenToPing("..");
