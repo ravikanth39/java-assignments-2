@@ -16,7 +16,7 @@ public class FindRangeToFillForm {
    public static  void main(String[] args){
        Scanner scan = new Scanner(System.in);
        String signUpDate,currentDate;
-
+       System.out.println("Enter the dates");
        //getting the dates
        signUpDate = scan.next();
        currentDate =scan.next();
@@ -51,6 +51,7 @@ public class FindRangeToFillForm {
        }catch (DateTimeParseException e){
            e.printStackTrace();
            System.out.println("desired date format is dd-MM-yyyy");
+           return;
        }
 
        //extracting respective years from current Date and sign-up Date
@@ -63,6 +64,7 @@ public class FindRangeToFillForm {
        } catch (NullPointerException e){
            e.printStackTrace();
            System.out.println("the Locale Date objects where not initialised");
+           return;
        }
 
 
@@ -72,7 +74,7 @@ public class FindRangeToFillForm {
            return;
        }
 
-       //forming the range by adding and substracting to the sign-up date in current year
+       //forming the range by adding and subtracting to the sign-up date in current year
        LocalDate beforeSignUpDate = signUpDateObject.plusYears(currentYear-signUpYear).minusDays(30);
        LocalDate afterSignUpDate = signUpDateObject.plusYears(currentYear-signUpYear).plusDays(30);
 

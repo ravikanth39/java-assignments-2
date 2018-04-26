@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+
 
 /**
  * This class takes the host ip address as string and then tries to ping
@@ -26,6 +26,7 @@ public class TimeTakenToPing {
             timeTakenToPing = getTimeTakenToPing(host);
         } catch (IOException e) {
             e.printStackTrace();
+            timeTakenToPing =-1;
         }
         if (timeTakenToPing > 0) {
             System.out.println("Time Taken to ping " + timeTakenToPing + " milli seconds");

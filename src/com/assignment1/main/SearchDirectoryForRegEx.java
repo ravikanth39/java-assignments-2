@@ -25,7 +25,7 @@ public class SearchDirectoryForRegEx {
         while (loopCounter==1){
             String givenRegex;
             System.out.println("Enter the regular expression");
-            givenRegex = scan.next();
+            givenRegex = scan.nextLine();
             Pattern compiledRegexPattern = null;
 
             //trying to compile the given regular expression into an pattern
@@ -34,6 +34,7 @@ public class SearchDirectoryForRegEx {
             }catch (PatternSyntaxException ex){
                 System.out.println("Given regular expression is invalid");
                 ex.printStackTrace();
+                continue;
             }
 
             //checking if the home folder path is valid
@@ -41,25 +42,34 @@ public class SearchDirectoryForRegEx {
                 if(new File("/home/zemoso").exists()){
                     printMatching(new File("/home/zemoso"),compiledRegexPattern);
                 }else{
-                    throw new FileNotFoundException("given path does not Exist");
+                    throw new FileNotFoundException("could not find the path specified in program");
                 }
             } catch (FileNotFoundException ex){
                 ex.printStackTrace();
+                System.out.println("The Path specified in program could not be found in your system");
+                scan.close();
+                break;
             }
 
             //Asking user to continue or not
             System.out.println("to continue enter 1 or 0 to stop");
-            try{
-                loopCounter=scan.nextInt();
-                while(loopCounter!=0 && loopCounter!=1){
-                    System.out.println("Input should be 1 or 0 please re-enter");
+            while(true){
+                try{
                     loopCounter=scan.nextInt();
+                    while(loopCounter!=0 && loopCounter!=1){
+                        System.out.println("Input should be 1 or 0 please re-enter");
+                        loopCounter=scan.nextInt();
+                    }
+                    break;
+                }catch (InputMismatchException e){
+                    e.printStackTrace();
+                    System.out.println("Invalid input,input should be either 1 or 0 ");
+                    System.out.println("Please re-enter");
+                    scan.nextLine();
                 }
-            }catch (InputMismatchException e){
-                System.out.println("Invalid input,input should be either 1 or 0");
-                e.printStackTrace();
             }
 
+            scan.nextLine();
         }
         scan.close();
     }
